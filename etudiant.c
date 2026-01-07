@@ -9,24 +9,25 @@
 void menu()
 {
     printf("\n");
-    printf("╔══════════════════════════════════════════════╗\n");
-    printf("║                                              ║\n");
-    printf("║          GESTION DES ÉTUDIANTS               ║\n");
-    printf("║                                              ║\n");
-    printf("╠══════════════════════════════════════════════╣\n");
-    printf("║  1️⃣  Enregistrer un étudiant                 ║\n");
-    printf("║  2️⃣  Modifier un étudiant                    ║\n");
-    printf("║  3️⃣  Rechercher un étudiant (dichotomie)     ║\n");
-    printf("║  4️⃣  Supprimer un étudiant                   ║\n");
-    printf("║  5️⃣  Trier par ordre alphabétique (Nom)      ║\n");
-    printf("║  6️⃣  Calculer l'âge d'un étudiant            ║\n");
-    printf("║  7️⃣  Trier par filière                       ║\n");
-    printf("║  8️⃣  Afficher la liste des étudiants         ║\n");
-    printf("║                                             ║\n");
-    printf("║  0️⃣  Quitter                                 ║\n");
-    printf("╚══════════════════════════════════════════════ ╝\n");
-    printf(" Votre choix : ");
+    printf("╔════════════════════════════════════════════════════╗\n");
+    printf("║                                                    ║\n");
+    printf("║            SYSTEME DE GESTION DES ETUDIANTS        ║\n");
+    printf("║                                                    ║\n");
+    printf("╠════════════════════════════════════════════════════╣\n");
+    printf("║  1 - Enregistrer un etudiant                       ║\n");
+    printf("║  2 - Modifier un etudiant                          ║\n");
+    printf("║  3 - Rechercher un etudiant (dichotomie)           ║\n");
+    printf("║  4 - Supprimer un etudiant                         ║\n");
+    printf("║  5 - Trier par ordre alphabetique (Nom)            ║\n");
+    printf("║  6 - Calculer l'age d'un etudiant                  ║\n");
+    printf("║  7 - Trier par filiere                             ║\n");
+    printf("║  8 - Afficher la liste des etudiants               ║\n");
+    printf("║                                                    ║\n");
+    printf("║  0 - Quitter                                       ║\n");
+    printf("╚════════════════════════════════════════════════════╝\n");
+    printf("Votre choix : ");
 }
+
 
 /* ===== ENREGISTRER PLUSIEURS ETUDIANTS ===== */
 
