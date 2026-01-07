@@ -180,5 +180,8 @@ void afficher_etudiants(Gestion_des_Etudians tab[], int n)
 
 int calculer_age(Gestion_des_Etudians e)
 {
-    
+        time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    int age = (tm.tm_year + 1900) - e.date_naissance.annee;
+   return age;
 }
