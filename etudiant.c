@@ -186,6 +186,33 @@ char matricule[10];
 
 void supprimer_etudiant(Gestion_des_Etudians tab[], int *n)
 {
+    char matricule[10];
+    int i, j;
+    int trouve = 0;
+
+    printf("Entrez le matricule de l'etudiant a supprimer : ");
+    scanf("%s", matricule);
+
+    for (i = 0; i < *n; i++)
+    {
+        if (strcmp(tab[i].matricule, matricule) == 0)
+        {
+            for (j = i; j < *n - 1; j++)
+            {
+                tab[j] = tab[j + 1];
+            }
+            (*n)--;
+            trouve = 1;
+            printf("\nEtudiant supprime avec succes.\n");
+            break;
+        }
+    }
+
+    if (!trouve)
+    {
+        printf("\nEtudiant non trouve.\n");
+    }
+    
 
 }
 
