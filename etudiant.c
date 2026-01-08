@@ -121,9 +121,43 @@ void trier_par_filiere(Gestion_des_Etudians tab[], int n)
 
 /* ========= RECHERCHE PAR DICHOTOMIE ========= */
 
-int rechercher_etudiant(Gestion_des_Etudians tab[], int n, char mat[])
+int rechercher_etudiant(Gestion_des_Etudians tab[], int n, char matricule[])
 {
+    int i, j;
+    Gestion_des_Etudians temp;
 
+    /* TRI PAR MATRICULE (obligatoire pour la dichotomie) */
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            if (strcmp(tab[i].matricule, tab[j].matricule) > 0)
+            {
+                temp = tab[i];
+                tab[i] = tab[j];
+                tab[j] = temp;
+            }
+        }
+    }
+
+    /* RECHERCHE DICHOTOMIQUE */
+    int debut = 0, fin = n - 1, milieu;
+    int cmp;
+
+    while (debut <= fin)
+    {
+        milieu = (debut + fin) / 2;
+        cmp = strcmp(tab[milieu].matricule, matricule);
+
+        if (cmp == 0)
+            return milieu;
+        else if (cmp < 0)
+            debut = milieu + 1;
+        else
+            fin = milieu - 1;
+    }
+
+    return -1;
 }
 
 /* ========= MODIFIER ========= */
