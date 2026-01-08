@@ -28,7 +28,7 @@ void menu()
     printf("Votre choix : ");
 }
 
-
+/**/
 /* ===== ENREGISTRER PLUSIEURS ETUDIANTS ===== */
 
 void ajouter_etudiant(Gestion_des_Etudians tab[], int *n)
