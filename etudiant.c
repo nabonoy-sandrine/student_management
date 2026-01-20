@@ -127,7 +127,7 @@ void trier_par_nom(Gestion_des_Etudians tab[], int n)
 
 void trier_par_filiere(Gestion_des_Etudians tab[], int n)
 {
- int i, j;
+    int i, j;
     Gestion_des_Etudians temp;
 
     for (i = 0; i < n - 1; i++) {
@@ -145,7 +145,13 @@ void trier_par_filiere(Gestion_des_Etudians tab[], int n)
 
 int rechercher_etudiant(Gestion_des_Etudians tab[], int n, char mat[])
 {
-
+    int i;
+    for (i = 0; i < n; i++) {
+        if (strcmp(tab[i].matricule, mat) == 0) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /* ========= MODIFIER ========= */
@@ -280,5 +286,12 @@ void afficher_etudiants(Gestion_des_Etudians tab[], int n)
 
 int calculer_age(Gestion_des_Etudians e)
 {
-    
+    int current_year = 2026;
+    int current_month = 1;
+    int current_day = 20;
+    int age = current_year - e.date_naissance.annee;
+    if (current_month < e.date_naissance.mois || (current_month == e.date_naissance.mois && current_day < e.date_naissance.jour)) {
+        age--;
+    }
+    return age;
 }
