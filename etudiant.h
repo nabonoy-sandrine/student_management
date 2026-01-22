@@ -38,8 +38,11 @@ void supprimer_etudiant(Gestion_des_Etudians tab[], int *n);
 void afficher_etudiants(Gestion_des_Etudians tab[], int n);
 void trier_par_nom(Gestion_des_Etudians tab[], int n);
 void trier_par_filiere(Gestion_des_Etudians tab[], int n);
-
+void pause_console();
 int rechercher_etudiant(Gestion_des_Etudians tab[], int n, char mat[]);
 int calculer_age(Gestion_des_Etudians e);
+void menu_modification();
+int date_valide(int jour, int mois, int annee);
+
 
 #endif
