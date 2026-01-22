@@ -95,17 +95,38 @@ int main()
               }
             break;
             case 6:
-                printf("Entrer le matricule : ");
-                scanf("%s", mat);
+            {
+                   int trouve = 0;
 
-                pos = rechercher_etudiant(etudiants, n, mat);
+                  if (n == 0)
+                 {
+                    printf("Aucun etudiant enregistre.\n");
+                    break;
+                 }
 
-                if (pos == -1)
-                  printf("Etudiant non trouve.\n");
-               else
-                  printf("Age : %d ans\n", calculer_age(etudiants[pos]));
+                 printf("Entrer le matricule : ");
+                 scanf("%s", mat);
 
-               break;
+                 for (int i = 0; i < n; i++)
+                 {
+                   if (strcmp(etudiants[i].matricule, mat) == 0)
+                   {
+                     printf("\nL'étudiant %s a %d ans.\n",etudiants[i].nom,calculer_age(etudiants[i]));
+
+                      trouve = 1;
+                      break;
+                   }
+                  }           
+
+                 if (!trouve)
+                 {
+                    printf("Etudiant non trouve.\n");
+                 }
+
+                 break;
+                pause_console();
+             }
+
             case 7:
                trier_par_filiere(etudiants, n);
                printf("Tri par filiere effectue.\n");
@@ -116,8 +137,10 @@ int main()
                  break;
 
             case 0:
-                printf("Fin du programme.\n");
-                break;
+                 printf("\nMerci d'avoir utilise le systeme de gestion des etudiants.\n");
+                 printf("Au revoir et a bientot.\n");
+                 break;
+
 
             default:
                 printf("Choix invalide !\n");
