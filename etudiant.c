@@ -198,7 +198,6 @@ void modifier_etudiant(Gestion_des_Etudians tab[], int n)
     printf("Entrez le matricule de l'etudiant a modifier : ");
     scanf("%s", matricule);
 
-    /* Le tableau doit être déjà trié par matricule */
     pos = rechercher_etudiant(tab, n, matricule);
 
     if (pos == -1)
@@ -265,7 +264,7 @@ void modifier_etudiant(Gestion_des_Etudians tab[], int n)
             break;
 
         default:
-            printf("⚠ Choix invalide.\n");
+            printf(" Choix invalide.\n");
         }
 
     } while (choix != 0);
