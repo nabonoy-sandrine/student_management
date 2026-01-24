@@ -128,9 +128,15 @@ int main()
              }
 
             case 7:
-               trier_par_filiere(etudiants, n);
-               printf("Tri par filiere effectue.\n");
-               break;
+               if (n < 2){
+                  printf("Impossible de trier : moins de 2 etudiants.\n");
+                }
+                else{
+                  trier_par_filiere(etudiants, n);
+                  printf("Tri par filiere effectue.\n");
+                  afficher_etudiants(etudiants, n);
+              }
+            break;
 
             case 8:
                  afficher_etudiants(etudiants, n);
