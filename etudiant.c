@@ -34,15 +34,16 @@
 
 void ajouter_etudiant(Gestion_des_Etudians tab[], int *n)
 {
-    int nb, i, j;
-    int existe;
+    int nb, i, j, existe;
+    int ok;
 
     printf("Combien d'etudiants voulez-vous enregistrer ? ");
     scanf("%d", &nb);
+    while (getchar() != '\n');
 
     if (*n + nb > MAX)
     {
-        printf(" Erreur : nombre maximum d'etudiants dépassé.\n");
+        printf(" Nombre maximum d'etudiants dépassé.\n");
         pause_console();
         return;
     }
@@ -51,7 +52,7 @@ void ajouter_etudiant(Gestion_des_Etudians tab[], int *n)
     {
         printf("\n--- Etudiant %d ---\n", i + 1);
 
-        /* ===== Matricule (UNIQUE) ===== */
+        /* ===== Matricule UNIQUE ===== */
         do
         {
             existe = 0;
@@ -63,54 +64,58 @@ void ajouter_etudiant(Gestion_des_Etudians tab[], int *n)
                 if (strcmp(tab[j].matricule, tab[*n].matricule) == 0)
                 {
                     existe = 1;
-                    printf(" Erreur : ce matricule existe déjà. Entrez un autre.\n");
+                    printf(" Ce matricule existe déjà.\n");
                     break;
                 }
             }
         } while (existe);
 
-        /* ===== Nom et Prénom ===== */
         printf("Nom : ");
         scanf("%s", tab[*n].nom);
 
         printf("Prenom : ");
         scanf("%s", tab[*n].prenom);
 
-        /* ===== Date de naissance (avec validation) ===== */
+        /* ===== DATE DE NAISSANCE (ROBUSTE) ===== */
         do
         {
             printf("Date de naissance (JJ MM AAAA) : ");
-            scanf("%d %d %d",
-                  &tab[*n].date_naissance.jour,
-                  &tab[*n].date_naissance.mois,
-                  &tab[*n].date_naissance.annee);
+            ok = scanf("%d %d %d",
+                       &tab[*n].date_naissance.jour,
+                       &tab[*n].date_naissance.mois,
+                       &tab[*n].date_naissance.annee);
 
-            if (!date_valide(tab[*n].date_naissance.jour,
-                             tab[*n].date_naissance.mois,
-                             tab[*n].date_naissance.annee))
+            while (getchar() != '\n');
+
+            if (ok != 3 || !date_valide(
+                    tab[*n].date_naissance.jour,
+                    tab[*n].date_naissance.mois,
+                    tab[*n].date_naissance.annee))
             {
-                printf(" Date invalide. Veuillez entrer à nouveau.\n");
+                printf(" Date invalide. Exemple correct : 12 03 2005\n");
             }
-        } while (!date_valide(tab[*n].date_naissance.jour,
-                              tab[*n].date_naissance.mois,
-                              tab[*n].date_naissance.annee));
 
-        /* ===== Sexe ===== */
+        } while (ok != 3 || !date_valide(
+                    tab[*n].date_naissance.jour,
+                    tab[*n].date_naissance.mois,
+                    tab[*n].date_naissance.annee));
+
+        /* ===== SEXE ===== */
         do
         {
             printf("Sexe (M/F) : ");
             scanf(" %c", &tab[*n].sexe);
+            while (getchar() != '\n');
 
             if (tab[*n].sexe != 'M' && tab[*n].sexe != 'm' &&
                 tab[*n].sexe != 'F' && tab[*n].sexe != 'f')
             {
-                printf(" Erreur : vous devez entrer M ou F uniquement.\n");
+                printf(" Entrez uniquement M ou F.\n");
             }
 
         } while (tab[*n].sexe != 'M' && tab[*n].sexe != 'm' &&
                  tab[*n].sexe != 'F' && tab[*n].sexe != 'f');
 
-        /* ===== Département, Filière, Région ===== */
         printf("Departement : ");
         scanf("%s", tab[*n].departement);
 
@@ -126,6 +131,7 @@ void ajouter_etudiant(Gestion_des_Etudians tab[], int *n)
     printf("\n Enregistrement terminé avec succès !\n");
     pause_console();
 }
+
 
 
 void trier_par_nom(Gestion_des_Etudians tab[], int n)
