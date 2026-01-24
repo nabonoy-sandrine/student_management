@@ -130,13 +130,42 @@ void ajouter_etudiant(Gestion_des_Etudians tab[], int *n)
 
 void trier_par_nom(Gestion_des_Etudians tab[], int n)
 {
-
+    int i,j;
+    Gestion_des_Etudians temp;
+    for ( i = 0; i < n - 1; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            if(strcmp(tab[i].nom, tab[j].nom) > 0){
+                temp = tab[i];
+                tab[i] = tab[j];
+                tab[j] = temp;
+            }
+        }
+        
+    }
+    
 }
 
 void trier_par_filiere(Gestion_des_Etudians tab[], int n)
 {
-
+    int i,j;
+    Gestion_des_Etudians temp;
+    for ( i = 0; i < n - 1; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            if(strcmp(tab[i].filiere, tab[j].filiere) > 0){
+                temp = tab[i];
+                tab[i] = tab[j];
+                tab[j] = temp;
+            }
+        }
+        
+    }
 }
+
+//trier_par_nom(etudiants, n); ou trier_par_filiere(etudiants, n);
 
 /* ========= RECHERCHE PAR DICHOTOMIE ========= */
 
