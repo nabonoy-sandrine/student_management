@@ -312,7 +312,7 @@ void modifier_etudiant(Gestion_des_Etudians tab[], int n)
 
 void supprimer_etudiant(Gestion_des_Etudians tab[], int *n)
 {
-    char matricule[10];
+    char matricule[15];
     int i, j;
     int trouve = 0;
 
